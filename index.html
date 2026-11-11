@@ -1,67 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Votación</title>
-  <link rel="stylesheet" href="./index.css">
-  <link rel="shortcut icon" href="./Imagenes/gota.webp" type="image/x-icon">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Votación</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="shortcut icon" href="./Imagenes/gota.webp" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Paso 1: Registro Personal -->
+      <section id="step-register" class="card">
+        <h2>Registro del Elector <br><br> Votación del Cuadro Conmemorativo del 13° Aniversario del 9-1-1 </h2>
+        <form id="voter-form">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required placeholder="Ej: Juan" />
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" required placeholder="Ej: Pérez" />
+          </div>
+          <div class="form-group">
+            <label for="cedula">Cédula de Identidad</label>
+            <input
+              type="text"
+              id="cedula"
+              required
+              placeholder="Ej: V-12345678"
+            />
+          </div>
+          <div class="form-group">
+            <label for="coordinacion">Coordinación / Departamento</label>
+            <input
+              type="text"
+              id="coordinacion"
+              required
+              placeholder="Ej: Gestión Comunicacional"
+            />
+          </div>
+          <button type="submit" class="btn">Continuar a la Selección</button>
+        </form>
+      </section>
 
-<div class="container">
-  
-  <!-- Paso 1: Datos Personales -->
-  <section id="step-register" class="card">
-    <h2>Registro del Elector <br> <br> Votación del Cuadro Conmemorativo del 13° Aniversario del Ven 9-1-1</h2>
-    <form id="voter-form">
-      <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" required placeholder="Ej: Juan">
-      </div>
-      <div class="form-group">
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" required placeholder="Ej: Pérez">
-      </div>
-      <div class="form-group">
-        <label for="cedula">Cédula de Identidad</label>
-        <input type="text" id="cedula" required placeholder="Ej: V-12345678">
-      </div>
-      <div class="form-group">
-        <label for="coordinacion">Coordinación / Departamento</label>
-        <input type="text" id="coordinacion" required placeholder="Ej: Gestión Comunicacional">
-      </div>
-      <button type="submit" class="btn">Continuar a la Votación</button>
-    </form>
-  </section>
+      <!-- Paso 2: Elección de Imágenes (3 Opciones) -->
+      <section id="step-vote" class="card hidden">
+        <h2>Selecciona tres (3) Opciones</h2>
+        <p class="subtitle">
+          Haz clic sobre las tarjetas para marcarlas o desmarcarlas. Puedes
+          ampliar con "🔍 Zoom".
+        </p>
 
-  <!-- Paso 2: Elección de Imágenes (26 opciones) -->
-  <section id="step-vote" class="card hidden">
-    <h2>Selecciona una Opción</h2>
-    <p class="subtitle">Desplaza la lista, usa "🔍 Zoom" para ver en detalle y haz clic sobre la imagen para elegirla.</p>
-    
-    <div class="gallery" id="gallery-container">
-      <!-- Se inyectan dinámicamente con JS -->
+        <div id="selection-counter" class="status-counter">
+          Seleccionadas: 0 de 3
+        </div>
+
+        <div class="gallery" id="gallery-container"></div>
+
+        <button id="go-to-review-btn" class="btn" disabled>
+          Selecciona 3 opciones para continuar
+        </button>
+      </section>
+
+      <!-- Paso 3: Revisión de la Elección -->
+      <section id="step-review" class="card hidden">
+        <h2>Revisión de Votación</h2>
+        <p class="subtitle">
+          Verifica que tus selecciones y datos sean correctos antes de enviar.
+        </p>
+
+        <!-- Resumen de datos del elector -->
+        <div class="voter-summary">
+          <div><strong>Elector:</strong> <span id="summary-name"></span></div>
+          <div><strong>Cédula:</strong> <span id="summary-cedula"></span></div>
+          <div>
+            <strong>Coordinación:</strong>
+            <span id="summary-coordinacion"></span>
+          </div>
+        </div>
+
+        <!-- Contenedor con las 3 imágenes elegidas -->
+        <div class="review-grid" id="review-container"></div>
+
+        <!-- Botones de Acción -->
+        <button id="confirm-submit-btn" class="btn">
+          Confirmar y Enviar Votos
+        </button>
+        <button id="back-to-vote-btn" class="btn btn-secondary">
+          Modificar Selección
+        </button>
+      </section>
+
+      <!-- Paso 4: Confirmación Final Exitosa -->
+      <section id="step-success" class="card hidden" style="text-align: center">
+        <div class="alert alert-success">
+          <h3>¡Voto registrado con éxito!</h3>
+          <p style="margin-top: 8px">
+            Tus 3 selecciones han sido procesadas y guardadas en el sistema. <br><br> ¡Gracias por tu voto!
+          </p>
+        </div>
+      </section>
     </div>
 
-    <button id="submit-vote-btn" class="btn" disabled>Confirmar y Enviar Voto</button>
-  </section>
-
-  <!-- Paso 3: Confirmación Final -->
-  <section id="step-success" class="card hidden" style="text-align: center;">
-    <div class="alert alert-success">
-      <h3>¡Voto registrado con éxito!</h3>
-      <p style="margin-top: 8px;">Tu elección ha quedado registrada en la hoja de cálculo.</p>
+    <!-- Modal de Zoom -->
+    <div id="zoom-modal" class="modal" onclick="closeZoom()">
+      <span class="modal-close">&times;</span>
+      <img id="modal-img" src="" alt="Vista ampliada" />
     </div>
-  </section>
-
-</div>
-
-<!-- Modal de Zoom -->
-<div id="zoom-modal" class="modal" onclick="closeZoom()">
-  <span class="modal-close">&times;</span>
-  <img id="modal-img" src="" alt="Vista ampliada">
-</div>
-<script src="./index.js"></script>
-</body>
+    <script src="./index.js"></script>
+  </body>
 </html>
