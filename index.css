@@ -1,0 +1,192 @@
+:root {
+  --primary: #0d6efd;
+  --bg: #f4f6f9;
+  --card-bg: #ffffff;
+  --text: #212529;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  width: 100%;
+  max-width: 960px;
+}
+.card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.subtitle {
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #0b5ed7;
+}
+.btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Galería responsiva para 26 elementos */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.option-card {
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s;
+  position: relative;
+}
+.option-card:hover {
+  transform: translateY(-2px);
+}
+.option-card.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.35);
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  background: #e9ecef;
+}
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.zoom-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.option-info {
+  padding: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Modal de Zoom */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+.modal img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 8px;
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+.alert {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+.alert-success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
