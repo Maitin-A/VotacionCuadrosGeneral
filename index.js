@@ -186,6 +186,7 @@ document.getElementById("back-to-vote-btn").addEventListener("click", () => {
 });
 
 // Paso 3 a Enviar: Confirmación final
+// Paso 3 a Enviar: Confirmación final
 document
   .getElementById("confirm-submit-btn")
   .addEventListener("click", async () => {
@@ -219,6 +220,11 @@ document
       if (res.status === "success") {
         document.getElementById("step-review").classList.add("hidden");
         document.getElementById("step-success").classList.remove("hidden");
+
+        // Recargar la página automáticamente después de 3 segundos (3000 ms)
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       } else {
         alert(res.message || "Ocurrió un error al registrar el voto.");
         confirmBtn.disabled = false;
@@ -233,7 +239,6 @@ document
       confirmBtn.innerText = "Confirmar y Enviar Votos";
     }
   });
-
 // Zoom
 function openZoom(e, src) {
   e.stopPropagation();
