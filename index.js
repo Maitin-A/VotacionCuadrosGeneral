@@ -56,6 +56,7 @@ const options = [
   },
   { id: "Yaracuy", title: "Yaracuy", filename: "Yaracuy.jpeg" },
   { id: "Zulia", title: "Zulia", filename: "Zulia.png" },
+  { id: "Sede Nacional", title: "Sede Nacional", filename: "Sede Nacional.jpg"}
 ];
 
 const MAX_VOTES = 3;
