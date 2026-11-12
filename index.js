@@ -219,9 +219,6 @@ document
       if (res.status === "success") {
         document.getElementById("step-review").classList.add("hidden");
         document.getElementById("step-success").classList.remove("hidden");
-        setTimeout(function () {
-          location.reload();
-        }, 3000); // 5000 milisegundos = 5 segundos
       } else {
         alert(res.message || "Ocurrió un error al registrar el voto.");
         confirmBtn.disabled = false;

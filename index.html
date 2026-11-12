@@ -11,7 +11,10 @@
     <div class="container">
       <!-- Paso 1: Registro Personal -->
       <section id="step-register" class="card">
-        <h2>Registro del Elector <br><br> Votación del Cuadro Conmemorativo del 13° Aniversario del 9-1-1 </h2>
+        <h2>
+          Registro del Elector <br /><br />
+          Votación del Cuadro Conmemorativo del 13° Aniversario del 9-1-1
+        </h2>
         <form id="voter-form">
           <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -96,8 +99,15 @@
         <div class="alert alert-success">
           <h3>¡Voto registrado con éxito!</h3>
           <p style="margin-top: 8px">
-            Tus 3 selecciones han sido procesadas y guardadas en el sistema. <br><br> ¡Gracias por tu voto!
+            Tus 3 selecciones han sido procesadas y guardadas en el sistema.
+            <br /><br />
+            ¡Gracias por tu voto!
           </p>
+          <script>
+            setTimeout(function () {
+              location.reload();
+            }, 3000); // 5000 milisegundos = 5 segundos
+          </script>
         </div>
       </section>
     </div>
